@@ -136,12 +136,12 @@ class RecipeViewSet(viewsets.ModelViewSet):
     def remove_from_shopping_cart(self, request, recipe, shopping_cart):
         if not shopping_cart.recipes.filter(pk__in=(recipe.pk,)).exists():
             return Response(
-                {'errors': ('Нельзя удалить покупку,' +
-                 'так как ее нет в списке покупок')},
+                {'errors': ('Нельзя удалить покупку,'
+                 + 'так как ее нет в списке покупок')},
                 status=HTTP_400_BAD_REQUEST)
         shopping_cart.recipes.remove(recipe)
         return Response(
-           status=HTTP_204_NO_CONTENT)
+            status=HTTP_204_NO_CONTENT)
 
     @action(methods=('post', 'delete',), detail=True)
     def shopping_cart(self, request, pk=None):
