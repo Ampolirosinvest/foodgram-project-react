@@ -61,7 +61,7 @@ class SubscriptionCreateDestroyView(APIView):
             return Response(
                 {'errors': 'Вы уже подписаны на данного пользователя'},
                 status=HTTP_400_BAD_REQUEST)
-        #if serializer.is_valid(raise_exception=True):
+        # if serializer.is_valid(raise_exception=True):
         serializer.save()
         return Response(serializer.data, status=HTTP_201_CREATED)
 
