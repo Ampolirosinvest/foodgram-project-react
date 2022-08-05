@@ -3,6 +3,18 @@ from django.urls import reverse
 from users.models import User
 
 
+BLUE = "#1965b5"
+GREEN = "#0dbf60"
+RED = "#e6766a"
+ORANGE = '#fca503'
+
+COLOR_CHOICES = [
+    (BLUE, "Синий"),
+    (GREEN, "Зелёный"),
+    (RED, "Красный"),
+    (ORANGE, 'Ораньжевый'),
+]
+
 class Ingredient(models.Model):
     name = models.CharField(
         'Название ингредиента',
@@ -31,6 +43,7 @@ class Tag(models.Model):
     color = models.CharField(
         'Цвет тега',
         unique=True,
+        choices=COLOR_CHOICES,
         max_length=7
     )
     slug = models.SlugField(
