@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
-from users.models import User
 
+from users.models import User
 
 BLUE = "#1965b5"
 GREEN = "#0dbf60"
@@ -14,6 +14,7 @@ COLOR_CHOICES = [
     (RED, "Красный"),
     (ORANGE, 'Ораньжевый'),
 ]
+
 
 class Ingredient(models.Model):
     name = models.CharField(

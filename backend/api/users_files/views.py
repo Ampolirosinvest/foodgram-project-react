@@ -1,4 +1,3 @@
-from api.titles.pagination import LimitPageNumberPagination
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet as DjoserUserViewSet
@@ -9,6 +8,8 @@ from rest_framework.response import Response
 from rest_framework.status import (HTTP_201_CREATED, HTTP_204_NO_CONTENT,
                                    HTTP_400_BAD_REQUEST)
 from rest_framework.views import APIView
+
+from api.titles.pagination import LimitPageNumberPagination
 from users.models import Subscription, User
 
 from .serializers import (NewUserSerializer,
