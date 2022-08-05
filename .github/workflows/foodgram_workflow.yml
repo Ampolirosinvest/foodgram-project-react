@@ -72,9 +72,9 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }} # cat ~/.ssh/id_rsa мнеаf
+          passphrase: ${{ secrets.PASSPHRASE }} # cat ~/.ssh/id_rsa мнеаff
           script: |
-            sudo docker-compose down -v 
+            sudo docker-compose stop 
             sudo docker-compose rm backend
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO_NAME }}:latest 
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/frontend:latest
