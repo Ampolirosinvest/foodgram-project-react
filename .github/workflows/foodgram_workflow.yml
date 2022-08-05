@@ -72,7 +72,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }} # cat ~/.ssh/id_rsa мнеаffffvvv
+          passphrase: ${{ secrets.PASSPHRASE }} # cat ~/.ssh/id_rsa мне
           script: |
             sudo docker-compose stop 
             sudo docker-compose rm backend
