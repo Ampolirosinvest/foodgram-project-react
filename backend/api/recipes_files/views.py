@@ -34,6 +34,7 @@ class TagViewSet(RetrivelistViewSet):
     http_method_names = ['get', ]
     pagination_class = LimitPageNumberPagination
 
+
 class IngredientViewSet(RetrivelistViewSet):
     """
     Вьюсет для ингридиентов
@@ -44,6 +45,7 @@ class IngredientViewSet(RetrivelistViewSet):
     filterset_class = SearchIngrFilter
     http_method_names = ['get', ]
     pagination_class = LimitPageNumberPagination
+
 
 class RecipeViewSet(viewsets.ModelViewSet):
     """
