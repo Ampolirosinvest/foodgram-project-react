@@ -74,8 +74,11 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }} # cat ~/.ssh/id_rsa мнеаf
           script: |
-            sudo docker-compose stop
+            sudo docker-compose down -v 
             sudo docker-compose rm backend
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO_NAME }}:latest 
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/frontend:latest
+            rm .env
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
