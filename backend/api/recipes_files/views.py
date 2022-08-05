@@ -32,7 +32,7 @@ class TagViewSet(RetrivelistViewSet):
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
     http_method_names = ['get', ]
-
+    pagination_class = LimitPageNumberPagination
 
 class IngredientViewSet(RetrivelistViewSet):
     """
@@ -43,7 +43,7 @@ class IngredientViewSet(RetrivelistViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_class = SearchIngrFilter
     http_method_names = ['get', ]
-
+    pagination_class = LimitPageNumberPagination
 
 class RecipeViewSet(viewsets.ModelViewSet):
     """
