@@ -38,7 +38,7 @@ class RecipeFilter(FilterSet):
 
     class Meta:
         model = Recipe
-        fields = ('author',)
+        fields = ('author', 'is_in_shopping_cart',)
 
     def get_is_favorited(self, queryset, name, value):
         if not value:
@@ -49,14 +49,6 @@ class RecipeFilter(FilterSet):
         )
 
     def get_is_in_shopping_cart(self, queryset, name, value):
-        if not value:
-            return queryset
-        try:
-            recipes = (
-                self.request.user.shopping_cart.recipes.all()
-            )
-        except ListShop.DoesNotExist:
-            return queryset
-        return queryset.filter(
-            pk__in=(recipe.pk for recipe in recipes)
-        )
+        if bool(value) and not self.request.user.is_anonymous:
+            return queryset.filter(in_shopping_cart__user=self.request.user)
+        return queryset.exclude(in_shopping_cart__user=self.request.user)
