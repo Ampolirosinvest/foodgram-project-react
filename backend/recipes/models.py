@@ -176,14 +176,16 @@ class Favorite(models.Model):
 
 
 class ListShop(models.Model):
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='shopping_cart',
         verbose_name='Пользователь',
     )
-    recipes = models.ManyToManyField(
-        'recipes.Recipe',
+    recipe = models.ForeignKey(
+        Recipe,
+        on_delete=models.CASCADE,
+        null=True,
         related_name='in_shopping_cart',
         verbose_name='Рецепты',
     )
@@ -191,6 +193,12 @@ class ListShop(models.Model):
     class Meta:
         verbose_name = 'Список покупок'
         verbose_name_plural = 'Списки покупок'
+        constraints = (
+            models.UniqueConstraint(
+                fields=('user', 'recipe'),
+                name='unique_shoppingcart_recipes'
+            ),
+        )
 
     def __str__(self):
-        return f'{self.user}'
+        return f'{self.user} -> {self.recipe}'
