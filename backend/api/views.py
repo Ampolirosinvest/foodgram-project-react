@@ -214,5 +214,5 @@ class SubscriptionCreateDestroyView(APIView):
             instance.delete()
             return Response(status=HTTP_204_NO_CONTENT)
         return Response(
-            {'errors': 'У вас нет подписки на этого автора!'},
+            {'errors': 'У вас нет подписки на Данного автора!'},
             status=HTTP_400_BAD_REQUEST)
