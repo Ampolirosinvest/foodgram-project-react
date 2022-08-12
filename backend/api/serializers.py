@@ -189,7 +189,7 @@ class CountOfIngredientSerializer(serializers.ModelSerializer):
 
 class AddIngredientSerializer(serializers.ModelSerializer):
     """
-    Сериализатор для добавления Ингредиентов
+    Сериализатор для добавления ингредиентов
     """
     id = serializers.PrimaryKeyRelatedField(queryset=Ingredient.objects.all())
     amount = serializers.IntegerField()

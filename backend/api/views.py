@@ -23,7 +23,6 @@ from api.permissions import IsAuthorOrAdminOrReadOnly
 from recipes.models import (CountOfIngredient, Favorite, Ingredient, ListShop,
                             Recipe, Tag)
 from users.models import Subscription, User
-
 from .serializers import (AddRecipeSerializer, IngredientSerializer,
                           NewUserSerializer, RecipeListSerializer,
                           SmallRecipeSerializer,
@@ -42,7 +41,7 @@ class TagViewSet(RetrivelistViewSet):
 
 class IngredientViewSet(RetrivelistViewSet):
     """
-    Вьюсет для ингридиентов
+    Вьюсет для ингредиентов
     """
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
@@ -200,9 +199,9 @@ class SubscriptionCreateDestroyView(APIView):
         data = {'follower': request.user.id, 'following': id}
         serializer = SubscriptionCreateDeleteSerializer(
             data=data, context={'request': request})
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data, status=HTTP_201_CREATED)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=HTTP_201_CREATED)
 
     def delete(self, request, id):
         follower = request.user
