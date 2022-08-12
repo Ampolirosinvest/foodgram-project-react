@@ -287,7 +287,7 @@ class AddRecipeSerializer(serializers.ModelSerializer):
         for tag in tags:
             if tag in tags_list:
                 raise serializers.ValidationError({
-                    'tags': 'Тэги уникальны!'
+                    'tags': 'Тэги должны быть уникальны!'
                 })
             tags_list.append(tag)
 
